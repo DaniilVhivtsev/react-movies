@@ -14,7 +14,11 @@ class Main extends React.Component {
     componentDidMount() {
         fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=transformers`)
             .then(response => response.json())
-            .then(data => this.setState({movies: data.Search, loading: false}));
+            .then(data => this.setState({movies: data.Search, loading: false}))
+            .catch((err) => {
+                console.log(err);
+                this.setState({loading: false});
+            });
     }
 
     handleSearchMovies = (searchValue, type = 'all') => {
@@ -23,18 +27,21 @@ class Main extends React.Component {
         const typeParameterWithValue = !type || type === 'all' ? '' : `&type=${type}`
         fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}${typeParameterWithValue}`)
             .then(response => response.json())
-            .then(data => this.setState({movies: data.Search, loading: false}));
+            .then(data => this.setState({movies: data.Search, loading: false})).catch((err) => {
+            console.log(err);
+            this.setState({loading: false});
+            });
     }
 
     render() {
-        const { movies, loading } = this.state;
+        const {movies, loading} = this.state;
 
         return (
             <main className="container content">
-                <Search searchMovies={this.handleSearchMovies} />
+                <Search searchMovies={this.handleSearchMovies}/>
                 {
                     loading
-                        ? <Preloader />
+                        ? <Preloader/>
                         : <Movies movies={movies}/>
                 }
 
@@ -42,4 +49,5 @@ class Main extends React.Component {
         );
     }
 }
+
 export default Main;
