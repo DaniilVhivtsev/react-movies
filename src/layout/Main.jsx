@@ -12,7 +12,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=transformers`)
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=transformers`)
             .then(response => response.json())
             .then(data => this.setState({movies: data.Search, loading: false}));
     }
@@ -21,7 +21,7 @@ class Main extends React.Component {
         this.setState({loading: true})
 
         const typeParameterWithValue = !type || type === 'all' ? '' : `&type=${type}`
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}${typeParameterWithValue}`)
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}${typeParameterWithValue}`)
             .then(response => response.json())
             .then(data => this.setState({movies: data.Search, loading: false}));
     }
