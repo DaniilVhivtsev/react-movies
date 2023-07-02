@@ -1,14 +1,16 @@
 import React from "react";
-import {Preloader} from "./Preloader";
+import Header from "./layout/Header"
+import Footer from "./layout/Footer";
+import Main from "./layout/Main";
 
-function App(props) {
-    return props.isLoading
-        ? <Preloader/>
-        : (
-            <div>
-                Hello world!
-            </div>
-        );
+function App() {
+    return (
+        <>{/*или React.Fragment*/}
+            <Header />
+            <Main />
+            <Footer />
+        </>
+    )
 }
 
 export default App;
