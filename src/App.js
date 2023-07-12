@@ -9,6 +9,7 @@ import {DualButton} from "./components/CallbackMemo";
 import {UseImperativeHook} from "./components/UseImperativeHandleHook";
 import {UseReducerExample} from "./components/UseReducerExample";
 import {CustomHooks} from "./components/CustomHooks";
+import Timer from "./components/timer/Timer";
 
 function App() {
     /*return (
@@ -25,7 +26,8 @@ function App() {
             {/*<DualButton />*/}
             {/*<UseImperativeHook />*/}
             {/*<UseReducerExample />*/}
-            <CustomHooks />
+            {/*<CustomHooks />*/}
+            <Timer />
         </Context>
     )
 }
