@@ -1,14 +1,16 @@
 import React from "react";
-import {Preloader} from "./Preloader";
+import {Header} from './components/Header';
+import {Footer} from './components/Footer';
+import {Shop} from "./components/Shop";
 
-function App(props) {
-    return props.isLoading
-        ? <Preloader/>
-        : (
-            <div>
-                Hello world!
-            </div>
-        );
+function App() {
+    return (
+        <>
+            <Header />
+            <Shop />
+            <Footer />
+        </>
+    );
 }
 
 export default App;
