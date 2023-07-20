@@ -54,9 +54,10 @@ export function Reducer(state, {type, payload}) {
                     ...payload.item,
                     quantity: 1
                 };
-                newOrder = {
-                    ...newItem
-                };
+                newOrder = [
+                    ...state.order,
+                    newItem,
+                ];
             } else {
                 newOrder = state.order.map((orderItem, index) => {
                     if (index === itemIndex) {
@@ -82,6 +83,14 @@ export function Reducer(state, {type, payload}) {
                 ...state,
                 isBasketShow: !state.isBasketShow,
             }
+        }
+
+        case 'HANDLE_SET_GOODS': {
+            return {
+                ...state,
+                goods: payload || [],
+                loading: false,
+            };
         }
 
         default:
